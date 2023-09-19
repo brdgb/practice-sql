@@ -4,8 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "serve": "serve out",
+    "type-check": "tsc --noEmit",
+    "lint": "next lint"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.3.1",
+    "@types/node": "^20.6.2",
+    "@types/react": "^18.2.21",
+    "ejs": "^3.1.9",
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "next": "^13.4.19",
+    "prisma": "^5.3.1",
+    "react": "^18.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
 }
