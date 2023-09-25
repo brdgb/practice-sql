@@ -8,13 +8,17 @@
     <form method="post" action="/send">
       <input name="user" />
       <input name="content" />
-      <button>送信</button>
+      <button type="submit">送信</button>
     </form>
     <div>
-      <% for (const post of posts){ %>
-        <p>user:<%=post.user %></li>
-        <p>content:<%=post.content %></li>
-      <% } %>
+      <ul>
+        <% for (const post of posts) { %>
+          <li>
+            <p>user:<%= post.user %></p>
+            <p>content:<%= post.content %></p>
+          </li>
+        <% } %>
+      </ul>
     </div>
   </body>
 </html>
