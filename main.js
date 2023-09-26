@@ -21,9 +21,9 @@ app.get("/", async (request, response) => {
 });
 
 app.post("/send", async (request, response) => {
-  await client.Post.create({
-    data: { user: request.body.user, content: request.body.content },
-  });
+  await client.$queryRawUnsafe(`
+    INSERT INTO "Post" ("user", "content") VALUES ('${request.body.user}', '${request.body.content}');
+  `);
   response.send("送信済み");
 });
 
