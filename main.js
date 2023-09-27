@@ -22,7 +22,7 @@ app.get("/", async (request, response) => {
 
 app.post("/send", async (request, response) => {
   await client.$queryRawUnsafe(`
-    INSERT INTO "Post" ("user", "content") VALUES ('${request.body.user}', '${request.body.content}');
+    INSERT INTO "Post" ("user", "password", "content") VALUES ('${request.body.user}', '${request.body.password}', '${request.body.content}');
   `);
   response.send("送信済み");
 });
