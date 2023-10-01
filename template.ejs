@@ -7,19 +7,26 @@
   <body>
     <form method="post" action="/send">
       <ul>
-      <li>ユーザー名: <input name="user" /></li>
-      <li>パスワード: <input name="password" /></li>
-      <li>投稿内容: <input name="content" /></li>
+        <li>from: <input name="from" /></li>
+        <li>to: <input name="to" /></li>
+        <li>subject: <input name="subject" /></li>
+        <li>content: <input name="content" /></li>
       </ul>
       <button type="submit">送信</button>
     </form>
+    <form>
+      <input name="from">からのメールで
+      <button type="submit">絞り込む</button>
+    </form>
     <div>
       <ul>
-        <% for (const post of posts) { %>
-          <li>
-            <p>user:<%= post.user %></p>
-            <p>content:<%= post.content %></p>
-          </li>
+        <% for (const mail of mails) { %>
+        <li>
+          <p>from:<%= mail.from %></p>
+          <p>to:<%= mail.to %></p>
+          <p>subject:<%= mail.subject %></p>
+          <p>content:<%= mail.content %></p>
+        </li>
         <% } %>
       </ul>
     </div>

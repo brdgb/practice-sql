@@ -9,20 +9,26 @@ const prisma = require("@prisma/client");
 const client = new prisma.PrismaClient();
 
 app.get("/", async (request, response) => {
-  const posts = (await client.Post.findMany()).map((post) => ({
-    user: post.user,
-    content: post.content,
+  const filterByFrom = request.query.from ?? "";
+  const mails = await client.$queryRawUnsafe(`
+    SELECT * FROM "Mail" WHERE "from" = '${filterByFrom}';
+  `);
+  const filteredMails = mails.map((mail) => ({
+    from: mail.from,
+    to: mail.to,
+    subject: mail.subject,
+    content: mail.content,
   }));
   const template = fs.readFileSync("template.ejs", "utf-8");
   const html = ejs.render(template, {
-    posts: posts,
+    mails: filteredMails,
   });
   response.send(html);
 });
 
 app.post("/send", async (request, response) => {
   await client.$queryRawUnsafe(`
-    INSERT INTO "Post" ("user", "password", "content") VALUES ('${request.body.user}', '${request.body.password}', '${request.body.content}');
+    INSERT INTO "Mail" ("from", "to", "subject" ,"content") VALUES ('${request.body.from}', '${request.body.to}','${request.body.subject}', '${request.body.content}');
   `);
   response.send("送信済み");
 });
