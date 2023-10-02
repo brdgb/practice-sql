@@ -1,29 +1,38 @@
 .search-bar{
+    display: flex;
+    flex-direction: row;
     width: 40%;
     margin: auto;
-    background-color: whitesmoke;
-    border-radius: 50px;
+}
+.search-bar-left{
+    padding: 7px;
+    width: 80%;
     text-align: center;
     font-size: large;
+    border-radius: 50px 0 0 50px;
+    border: 2px solid gainsboro;
 }
 .search-input{
     margin: 5px;
+    padding: 2px;
     border: none;
     font-size: large;
     background: none;
 }
 .search-button{
     border: none;
-    padding: 10px;
-
+    padding: 7px 18px 7px 15px;
     background-color: gainsboro;
+    border-radius: 0 50px 50px 0;
+    text-align: center;
     font-size: large;
+    font-weight: 700;
 }
 
 .mail-container{
     width: 80%;
     margin:auto;
-    margin-top: 1%;
+    margin-top: 2%;
     padding: 20px;
     background-color: whitesmoke;
     border-radius: 5px;
