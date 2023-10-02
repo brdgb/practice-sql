@@ -1,0 +1,38 @@
+.search-bar{
+    width: 40%;
+    margin: auto;
+    background-color: whitesmoke;
+    border-radius: 50px;
+    text-align: center;
+    font-size: large;
+}
+.search-input{
+    margin: 5px;
+    border: none;
+    font-size: large;
+    background: none;
+}
+.search-button{
+    border: none;
+    padding: 10px;
+
+    background-color: gainsboro;
+    font-size: large;
+}
+
+.mail-container{
+    width: 80%;
+    margin:auto;
+    margin-top: 1%;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+}
+.mail-sender{
+    margin: 0px;
+}
+.mail-receiver{
+    margin: 0px;
+    font-size: small;
+    color: gray;
+}

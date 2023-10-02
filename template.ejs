@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>フォーム</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
     <form method="post" action="/send">
@@ -14,21 +15,25 @@
       </ul>
       <button type="submit">送信</button>
     </form>
-    <form>
-      <input name="from">からのメールで
-      <button type="submit">絞り込む</button>
-    </form>
+    <div class="search-bar">
+      <form>
+        <input
+          name="from"
+          class="search-input"
+          placeholder="差出人を入力"
+        />からのメールで
+        <button type="submit" class="search-button">絞り込む</button>
+      </form>
+    </div>
     <div>
-      <ul>
-        <% for (const mail of mails) { %>
-        <li>
-          <p>from:<%= mail.from %></p>
-          <p>to:<%= mail.to %></p>
-          <p>subject:<%= mail.subject %></p>
-          <p>content:<%= mail.content %></p>
-        </li>
-        <% } %>
-      </ul>
+      <% for (const mail of mails) { %>
+      <div class="mail-container">
+        <h2 class="mail-subject"><%= mail.subject %></h2>
+        <h3 class="mail-sender"><%= mail.from %></h3>
+        <p class="mail-receiver">to:<%= mail.to %></p>
+        <p><%= mail.content %></p>
+      </div>
+      <% } %>
     </div>
   </body>
 </html>

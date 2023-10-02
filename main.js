@@ -8,12 +8,18 @@ app.use(express.urlencoded({ extended: true }));
 const prisma = require("@prisma/client");
 const client = new prisma.PrismaClient();
 
+app.use("/css", express.static("css"));
+
 app.get("/", async (request, response) => {
-  const filterByFrom = request.query.from ?? "";
-  const mails = await client.$queryRawUnsafe(`
-    SELECT * FROM "Mail" WHERE "from" = '${filterByFrom}';
+  const mails = request.query.from
+    ? await client.$queryRawUnsafe(`
+    SELECT * FROM "Mail" WHERE "from" = '${request.query.from}' AND "to" = 'you';
+  `)
+    : await client.$queryRawUnsafe(`
+    SELECT * FROM "Mail" WHERE "to" = 'you';
   `);
-  const filteredMails = mails.map((mail) => ({
+
+  const extractedMails = mails.map((mail) => ({
     from: mail.from,
     to: mail.to,
     subject: mail.subject,
@@ -21,7 +27,7 @@ app.get("/", async (request, response) => {
   }));
   const template = fs.readFileSync("template.ejs", "utf-8");
   const html = ejs.render(template, {
-    mails: filteredMails,
+    mails: extractedMails,
   });
   response.send(html);
 });
