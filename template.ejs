@@ -15,27 +15,39 @@
       </ul>
       <button type="submit">送信</button>
     </form>
-    <div>
-      <form class="search-bar">
-        <div class="search-bar-left">
-        <input
-          name="from"
-          class="search-input"
-          placeholder="差出人を入力"
-        />からのメールを
+    <div class="side-mail-wrapper">
+      <div class="sidebar">
+        <% let allMailBG = 'gainsboro'; let searchMailBG = 'white';
+        if(queryFrom!=undefined) { allMailBG = 'white'; searchMailBG =
+        'gainsboro'; } %>
+        <div class="side-selector" style="background-color: <%= allMailBG %>">
+          <a href="/">全てのメール</a>
         </div>
-        <button type="submit" class="search-button">表示</button>
-      </form>
-    </div>
-    <div>
-      <% for (const mail of mails) { %>
-      <div class="mail-container">
-        <h2 class="mail-subject"><%= mail.subject %></h2>
-        <h3 class="mail-sender"><%= mail.from %></h3>
-        <p class="mail-receiver">to:<%= mail.to %></p>
-        <p><%= mail.content %></p>
+        <div
+          class="side-selector"
+          style="background-color: <%= searchMailBG %>"
+        >
+          差出人で絞り込み
+        </div>
+        <form class="search-bar">
+          <input
+            name="from"
+            class="search-input"
+            placeholder="差出人を入力"
+            value="<%= queryFrom %>"
+          />
+        </form>
       </div>
-      <% } %>
+      <div class="mail-wrapper">
+        <% for (const mail of mails) { %>
+        <div class="mail-container">
+          <h2 class="mail-subject"><%= mail.subject %></h2>
+          <h3 class="mail-sender"><%= mail.from %></h3>
+          <p class="mail-receiver">to:<%= mail.to %></p>
+          <p class="mail-content"><%= mail.content %></p>
+        </div>
+        <% } %>
+      </div>
     </div>
   </body>
 </html>

@@ -27,6 +27,7 @@ app.get("/", async (request, response) => {
   }));
   const template = fs.readFileSync("template.ejs", "utf-8");
   const html = ejs.render(template, {
+    queryFrom: request.query.from, 
     mails: extractedMails,
   });
   response.send(html);

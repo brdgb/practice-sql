@@ -1,44 +1,62 @@
+
+
 .search-bar{
-    display: flex;
-    flex-direction: row;
-    width: 40%;
-    margin: auto;
-}
-.search-bar-left{
-    padding: 7px;
-    width: 80%;
-    text-align: center;
+    margin: 15px;
+    padding: 10px;
     font-size: large;
-    border-radius: 50px 0 0 50px;
-    border: 2px solid gainsboro;
+    border-radius: 50px;
+    background-color:  whitesmoke;
 }
 .search-input{
-    margin: 5px;
     padding: 2px;
     border: none;
     font-size: large;
     background: none;
 }
-.search-button{
-    border: none;
-    padding: 7px 18px 7px 15px;
-    background-color: gainsboro;
-    border-radius: 0 50px 50px 0;
-    text-align: center;
-    font-size: large;
-    font-weight: 700;
+
+.side-mail-wrapper{
+    display: flex;
+}
+.sidebar{
+    width: 20%;
+    height: 50vh;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: 3px 3px 7px gainsboro;
+}
+.side-selector{
+    margin: 15px 15px 15px 0px;
+    font-weight: bold;
+    padding: 5px;
+    padding-left: 20px;
+    border-radius: 0px 50px 50px 0px;
+}
+.side-selector > a{
+    color: black;
+    text-decoration: none;
 }
 
-.mail-container{
-    width: 80%;
-    margin:auto;
-    margin-top: 2%;
-    padding: 20px;
-    background-color: whitesmoke;
-    border-radius: 5px;
+.mail-wrapper{
+    width: 75%;
+    margin: auto;
+    margin-top: 0;
+    padding: 1%;
+    padding-top: 0px;
+    background-color: white;
 }
-.mail-sender{
+.mail-container{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 3px 3px 7px gainsboro;
+}
+.mail-subject, .mail-sender{
     margin: 0px;
+}
+.mail-content{
+    margin-bottom: 0px;
 }
 .mail-receiver{
     margin: 0px;
