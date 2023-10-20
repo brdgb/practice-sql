@@ -6,16 +6,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <form method="post" action="/send">
-      <ul>
-        <li>from: <input name="from" /></li>
-        <li>to: <input name="to" /></li>
-        <li>subject: <input name="subject" /></li>
-        <li>content: <input name="content" /></li>
-      </ul>
-      <button type="submit">送信</button>
-    </form>
-    <div class="side-mail-wrapper">
+    <img src="img/hacker_mail_logo.svg" alt="Hacker mail logo" class="header_logo"/>
+    <div class="side-mail-wrapper" >
       <div class="sidebar">
         <% let allMailBG = 'gainsboro'; let searchMailBG = 'white';
         if(queryFrom!=undefined) { allMailBG = 'white'; searchMailBG =

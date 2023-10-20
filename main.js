@@ -9,6 +9,7 @@ const prisma = require("@prisma/client");
 const client = new prisma.PrismaClient();
 
 app.use("/css", express.static("css"));
+app.use("/img", express.static("img"));
 
 app.get("/", async (request, response) => {
   const mails = request.query.from
@@ -31,13 +32,6 @@ app.get("/", async (request, response) => {
     mails: extractedMails,
   });
   response.send(html);
-});
-
-app.post("/send", async (request, response) => {
-  await client.$queryRawUnsafe(`
-    INSERT INTO "Mail" ("from", "to", "subject" ,"content") VALUES ('${request.body.from}', '${request.body.to}','${request.body.subject}', '${request.body.content}');
-  `);
-  response.send("送信済み");
 });
 
 app.listen(3000);

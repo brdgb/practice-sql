@@ -1,4 +1,6 @@
-
+.header_logo{
+    width: 20%;
+}
 
 .search-bar{
     margin: 15px;
@@ -19,8 +21,7 @@
 }
 .sidebar{
     width: 20%;
-    height: 50vh;
-    border-radius: 0px 5px 5px 0px;
+    height: 110vh;
     box-shadow: 3px 3px 7px gainsboro;
 }
 .side-selector{
