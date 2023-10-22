@@ -14,7 +14,7 @@ app.use("/img", express.static("img"));
 app.get("/", async (request, response) => {
   const mails = request.query.from
     ? await client.$queryRawUnsafe(`
-    SELECT * FROM "Mail" WHERE "from" = '${request.query.from}' AND "to" = '駒場 優' ORDER BY id" DESC;
+    SELECT * FROM "Mail" WHERE "from" = '${request.query.from}' AND "to" = '駒場 優' ORDER BY "id" DESC;
   `)
     : await client.$queryRawUnsafe(`
     SELECT * FROM "Mail" WHERE "to" = '駒場 優' ORDER BY "id" DESC;
