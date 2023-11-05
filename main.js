@@ -22,6 +22,7 @@ app.get("/", async (request, response) => {
 
   const extractedMails = mails.map((mail) => ({
     from: mail.from,
+    toType: mail.toType,
     to: mail.to,
     date: mail.date,
     subject: mail.subject,
