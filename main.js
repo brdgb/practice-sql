@@ -12,13 +12,24 @@ app.use("/css", express.static("css"));
 app.use("/img", express.static("img"));
 
 app.get("/", async (request, response) => {
-  const mails = request.query.from
-    ? await client.$queryRawUnsafe(`
-    SELECT * FROM "Mail" WHERE "from" = '${request.query.from}' AND "to" = '駒場 優' ORDER BY "id" DESC;
-  `)
-    : await client.$queryRawUnsafe(`
-    SELECT * FROM "Mail" WHERE "to" = '駒場 優' ORDER BY "id" DESC;
-  `);
+  let mails = [];
+  const FROM = request.query.from;
+  try {
+    FROM
+      ? (mails = await client.$queryRawUnsafe(
+          `SELECT * FROM "Mail" WHERE "from" = '${FROM}' AND "to" = '駒場 優' ORDER BY "id" DESC;`
+        ))
+      : (mails = await client.$queryRawUnsafe(`
+        SELECT * FROM "Mail" WHERE "to" = '駒場 優' ORDER BY "id" DESC;
+      `));
+  } catch (e) {
+    if (e instanceof prisma.PrismaClientKnownRequestError) {
+      if (e.code === "P2010") {
+        console.log("invalid input");
+      }
+    }
+    return 0;
+  }
 
   const extractedMails = mails.map((mail) => ({
     from: mail.from,
