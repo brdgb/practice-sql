@@ -59,6 +59,9 @@
             駒場 優
           </div>
         </div>
+        <% if (mails.length == 0) { %>
+          <p>メールはありません。</p>
+        <% } %>
         <% for (const mail of mails) { %>
         <div class="mail-container">
           <div class="mail-subject-date-container">
