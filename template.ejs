@@ -59,7 +59,10 @@
             駒場 優
           </div>
         </div>
-        <% if (mails.length == 0) { %>
+        <% if (isError) { %>
+          <p>不正なSQL文です。</p>
+        <% } %>
+        <% if (!isError && mails.length == 0) { %>
           <p>メールはありません。</p>
         <% } %>
         <% for (const mail of mails) { %>

@@ -28,7 +28,13 @@ app.get("/", async (request, response) => {
         console.log("invalid input");
       }
     }
-    return 0;
+    const template = fs.readFileSync("template.ejs", "utf-8");
+    const html = ejs.render(template, {
+    queryFrom: request.query.from,
+    mails: [],
+    isError: true,
+  });
+    return response.send(html);
   }
 
   const extractedMails = mails.map((mail) => ({
@@ -43,6 +49,7 @@ app.get("/", async (request, response) => {
   const html = ejs.render(template, {
     queryFrom: request.query.from,
     mails: extractedMails,
+    isError: false,
   });
   response.send(html);
 });
